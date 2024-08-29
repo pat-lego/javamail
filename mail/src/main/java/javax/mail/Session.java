@@ -1257,12 +1257,12 @@ public final class Session {
 		logger.log(Level.CONFIG, "successfully loaded resource: {0}",
 					    name);
 	    } 
-		// else {
-		// if (expected) {
-		//     logger.log(Level.WARNING,
-		// 		    "expected resource not found: {0}", name);
-		// 		}
-	    // }
+		else {
+		if (expected) {
+		    logger.log(Level.WARNING,
+				    "expected resource not found: {0}", name);
+				}
+	    }
 	} catch (IOException e) {
 	    logger.log(Level.CONFIG, "Exception loading resource", e);
 	} catch (SecurityException sex) {
@@ -1365,8 +1365,12 @@ public final class Session {
 			@Override
 			public InputStream run() throws IOException {
 			    try {
-				return c.getResourceAsStream(name);
-			    } catch (RuntimeException e) {
+					InputStream is = c.getResourceAsStream(name);
+					if (is == null) {
+						is = this.getClass().getClassLoader().getResourceAsStream(name);
+				 	} 
+					return is;
+				} catch (RuntimeException e) {
 				// gracefully handle ClassLoader bugs (Tomcat)
 				IOException ioex = new IOException(
 				    "ClassLoader.getResourceAsStream failed");

@@ -1,6 +1,6 @@
+*.class
+.java-version
+.project
+org.eclipse.*
+bin/
 target/
-*/target/
-nbproject/private/
-.m2/
-webrev
-src/main/java/javax/mail/Version\.java
