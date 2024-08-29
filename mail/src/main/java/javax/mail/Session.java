@@ -1182,10 +1182,10 @@ public final class Session {
 	};
 
 	// load default META-INF/javamail.default.address.map from mail.jar
-	loadResource("/META-INF/javamail.default.address.map", cl, loader, true);
+	//loadResource("/META-INF/javamail.default.address.map", cl, loader, true);
 
 	// load the META-INF/javamail.address.map file supplied by an app
-	loadAllResources("META-INF/javamail.address.map", cl, loader);
+	//loadAllResources("META-INF/javamail.address.map", cl, loader);
 
 	// load system-wide javamail.address.map from the
 	// <java.home>/{conf,lib} directory
@@ -1256,11 +1256,13 @@ public final class Session {
 		loader.load(clis);
 		logger.log(Level.CONFIG, "successfully loaded resource: {0}",
 					    name);
-	    } else {
-		if (expected)
-		    logger.log(Level.WARNING,
-				    "expected resource not found: {0}", name);
-	    }
+	    } 
+		// else {
+		// if (expected) {
+		//     logger.log(Level.WARNING,
+		// 		    "expected resource not found: {0}", name);
+		// 		}
+	    // }
 	} catch (IOException e) {
 	    logger.log(Level.CONFIG, "Exception loading resource", e);
 	} catch (SecurityException sex) {

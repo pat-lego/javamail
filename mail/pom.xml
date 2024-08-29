@@ -50,6 +50,7 @@
 	<artifactId>all</artifactId>
 	<version>1.6.2</version>
     </parent>
+	<version>1.6.2-DEBUG</version>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sun.mail</groupId>
     <artifactId>javax.mail</artifactId>
